@@ -14,7 +14,7 @@ import com.example.hyteprojekti.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn;
+    Button btn, btnstats;
     EditText et;
     String st, dateString;
     javaDate dateOlio;
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
+        btnstats = findViewById(R.id.button3);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +45,17 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnstats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     void storeData(){
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);

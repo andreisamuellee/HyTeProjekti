@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);0
 
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
@@ -34,11 +34,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 dateOlio = new javaDate();
-                dateString = dateOlio.toString();
+                dateString = dateOlio.getDate(0);
                 st = et.getText().toString();
-
                 storeData();
-
                 intent.putExtra("Date",dateString);
                 intent.putExtra("Value",st);
                 startActivity(intent);

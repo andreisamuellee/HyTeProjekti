@@ -23,6 +23,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<Integer> smokesSmoked;
     javaDate dateOlio;
     LineChart chart = (LineChart) findViewById(R.id.chart);
+    int lol = 69;
 
 
 
@@ -70,6 +71,7 @@ public class SecondActivity extends AppCompatActivity {
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
         chart.invalidate(); // refresh
+
     }
 
 

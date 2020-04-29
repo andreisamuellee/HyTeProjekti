@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
 
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
@@ -36,12 +35,20 @@ public class MainActivity extends AppCompatActivity {
                 dateString = dateOlio.toString();
                 st = et.getText().toString();
 
+                storeData();
+
                 intent.putExtra("Date",dateString);
                 intent.putExtra("Value",st);
                 startActivity(intent);
                 finish();
-
             }
         });
+    }
+
+    void storeData(){
+        SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+        prefEditor.putInt(dateString, Integer.parseInt(st));
+        prefEditor.commit();
     }
 }

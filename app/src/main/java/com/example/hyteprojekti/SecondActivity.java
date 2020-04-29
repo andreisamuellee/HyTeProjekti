@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class SecondActivity extends AppCompatActivity {
 
     TextView tv;
-    String st;
+    String st, date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,9 @@ public class SecondActivity extends AppCompatActivity {
         tv = findViewById(R.id.textView);
 
         st = getIntent().getExtras().getString("Value");
+        date = getIntent().getExtras().getString("Date");
 
-        tv.setText(st + " added to days total.");
+        tv.setText(st + " added to day "+ date +" total.");
 
     }
 }

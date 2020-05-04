@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -28,6 +29,7 @@ public class SecondActivity extends AppCompatActivity {
     private static final String TAG = "SecondActivity";
     private LineChart chart;
     TextView tv;
+    String st, date;
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
     javaDate dateOlio;
@@ -41,12 +43,15 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        testi();
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
         dateOlio = new javaDate();
 
         tv = findViewById(R.id.textView);
+        st = getIntent().getExtras().getString("Value");
+        date = getIntent().getExtras().getString("Date");
+
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm/yyyy"
         //days.add(date);
@@ -61,8 +66,8 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i<7; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
-        testi();
-        tv.setText("A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +". Average per day this week: "+Keskiarvo());
+
+        tv.setText(Integer.toString(smokesSmoked.get(0)) + " added to day "+ days.get(0) +" total. Average smokes smoked per day this week: "+Keskiarvo());
     }
 
     public String Keskiarvo(){
@@ -119,7 +124,10 @@ public class SecondActivity extends AppCompatActivity {
         LineData data = new LineData(dataSets);
 
         chart.setData(data);
+
     }
+
+
 }
 
 

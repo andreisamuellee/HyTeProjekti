@@ -8,15 +8,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -27,9 +31,8 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
 
     private static final String TAG = "SecondActivity";
-    private LineChart chart;
+    private BarChart chart;
     TextView tv;
-    String st, date;
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
     javaDate dateOlio;
@@ -43,15 +46,12 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        testi();
+
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
         dateOlio = new javaDate();
 
         tv = findViewById(R.id.textView);
-        st = getIntent().getExtras().getString("Value");
-        date = getIntent().getExtras().getString("Date");
-
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm/yyyy"
         //days.add(date);
@@ -66,8 +66,8 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i<7; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
-
-        tv.setText(Integer.toString(smokesSmoked.get(0)) + " added to day "+ days.get(0) +" total. Average smokes smoked per day this week: "+Keskiarvo());
+        testi();
+        tv.setText("A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +". Average per day this week: "+Keskiarvo());
     }
 
     public String Keskiarvo(){
@@ -97,14 +97,14 @@ public class SecondActivity extends AppCompatActivity {
     } */
 
     public void testi(){
-        chart = (LineChart) findViewById(R.id.chart);
+        chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
         chart.setScaleEnabled(false);
 
-        ArrayList<Entry> yValues = new ArrayList<>();
+        ArrayList<BarEntry> yValues = new ArrayList<>();
 
         for (int i = 0; i<7; i++) {
-            yValues.add(new Entry(i, smokesSmoked.get(i)));
+            yValues.add(new BarEntry(i, smokesSmoked.get(i)));
         }
 
         final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
@@ -112,21 +112,18 @@ public class SecondActivity extends AppCompatActivity {
         xAxis.setValueFormatter(new IndexAxisValueFormatter(weekdays));
 
 
-        LineDataSet set1 = new LineDataSet(yValues, "Data Set 1");
+        BarDataSet set1 = new BarDataSet(yValues, "Data Set 1");
 
 
-        set1.setFillAlpha(110);
 
-        ArrayList<ILineDataSet>dataSets = new ArrayList<>();
+
+        ArrayList<IBarDataSet>dataSets = new ArrayList<>();
         dataSets.add(set1);
 
-        LineData data = new LineData(dataSets);
+        BarData data = new BarData(dataSets);
 
         chart.setData(data);
-
     }
-
-
 }
 
 

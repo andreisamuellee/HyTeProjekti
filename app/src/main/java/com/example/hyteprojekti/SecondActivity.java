@@ -9,21 +9,27 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
 
+    private static final String TAG = "SecondActivity";
+    private LineChart chart;
     TextView tv;
     String st, date;
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
     javaDate dateOlio;
-    //LineChart chart = (LineChart) findViewById(R.id.chart);
+
     int lol = 69;
 
 
@@ -33,6 +39,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        testi();
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
         dateOlio = new javaDate();
@@ -82,6 +89,34 @@ public class SecondActivity extends AppCompatActivity {
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
         chart.invalidate(); // refresh
+
+    } */
+
+    public void testi(){
+        chart = (LineChart) findViewById(R.id.chart);
+        chart.setDragEnabled(true);
+        chart.setScaleEnabled(false);
+
+        ArrayList<Entry> yValues = new ArrayList<>();
+
+        yValues.add(new Entry(0,10f));
+        yValues.add(new Entry(1,20f));
+        yValues.add(new Entry(2,30f));
+        yValues.add(new Entry(3,40f));
+
+        LineDataSet set1 = new LineDataSet(yValues, "Data Set 1");
+
+        set1.setFillAlpha(110);
+
+        ArrayList<ILineDataSet>dataSets = new ArrayList<>();
+        dataSets.add(set1);
+
+        LineData data = new LineData(dataSets);
+
+        chart.setData(data);
+
+    }
+
 
     }*/
 }

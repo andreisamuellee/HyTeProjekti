@@ -20,6 +20,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
@@ -31,7 +32,7 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
 
     private static final String TAG = "SecondActivity";
-    private BarChart chart;
+    BarChart chart;
     TextView tv;
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
@@ -97,28 +98,37 @@ public class SecondActivity extends AppCompatActivity {
     } */
 
     public void testi(){
+
+        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
         chart.setScaleEnabled(false);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
+
 
         ArrayList<BarEntry> yValues = new ArrayList<>();
+
 
         for (int i = 0; i<7; i++) {
             yValues.add(new BarEntry(i, smokesSmoked.get(i)));
         }
 
-        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(weekdays));
+
+        ArrayList<IBarDataSet>dataSets = new ArrayList<>();
+
 
 
         BarDataSet set1 = new BarDataSet(yValues, "Data Set 1");
-
-
-
-
-        ArrayList<IBarDataSet>dataSets = new ArrayList<>();
         dataSets.add(set1);
+
+
+
+
+
 
         BarData data = new BarData(dataSets);
 

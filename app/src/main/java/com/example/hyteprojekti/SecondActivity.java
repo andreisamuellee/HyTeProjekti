@@ -54,7 +54,7 @@ public class SecondActivity extends AppCompatActivity {
 
         tv = findViewById(R.id.textView);
 
-        //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm/yyyy"
+        //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
         for (int i = 0; i<7; i++){
             Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
@@ -78,10 +78,9 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i<7; i++){
             kaikki += smokesSmoked.get(i);
         }
-
-        Log.d("Smoke", Float.toString(kaikki));
+        
         kArvo = kaikki/7;
-        return Float.toString(kArvo);
+        return String.format("%.1f", kArvo);
     }
 /*
     public void newArvot(String x, int y){

@@ -9,10 +9,13 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -38,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        testi();
+
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
         dateOlio = new javaDate();
@@ -58,7 +61,7 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i<7; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
-
+        testi();
         tv.setText("A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +". Average per day this week: "+Keskiarvo());
     }
 
@@ -95,12 +98,17 @@ public class SecondActivity extends AppCompatActivity {
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        yValues.add(new Entry(0,10f));
-        yValues.add(new Entry(1,20f));
-        yValues.add(new Entry(2,30f));
-        yValues.add(new Entry(3,40f));
+        for (int i = 0; i<7; i++) {
+            yValues.add(new Entry(i, smokesSmoked.get(i)));
+        }
+
+        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(weekdays));
+
 
         LineDataSet set1 = new LineDataSet(yValues, "Data Set 1");
+
 
         set1.setFillAlpha(110);
 

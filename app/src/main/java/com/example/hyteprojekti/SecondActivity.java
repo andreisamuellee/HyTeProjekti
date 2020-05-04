@@ -66,15 +66,18 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 0; i<7; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
+
         testi();
         tv.setText("A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +". Average per day this week: "+Keskiarvo());
     }
 
     public String Keskiarvo(){
         float kaikki = 0, kArvo = 0;
+
         for (int i = 0; i<7; i++){
             kaikki += smokesSmoked.get(i);
         }
+
         Log.d("Smoke", Float.toString(kaikki));
         kArvo = kaikki/7;
         return Float.toString(kArvo);
@@ -107,21 +110,17 @@ public class SecondActivity extends AppCompatActivity {
             yValues.add(new BarEntry(i, smokesSmoked.get(i)));
         }
 
-        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(weekdays));
-
-
         BarDataSet set1 = new BarDataSet(yValues, "Data Set 1");
-
-
-
 
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
         dataSets.add(set1);
 
         BarData data = new BarData(dataSets);
+
+        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(weekdays));
 
         chart.setData(data);
     }

@@ -33,15 +33,19 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                dateOlio = new javaDate();
-                dateString = dateOlio.getDate(0);
-                st = et.getText().toString();
-                Log.d("vika", "error: "+et.getText());
-                storeData();
-
-                startActivity(intent);
-                finish();
+                Log.d("null?", et.getText().toString());
+                if (et.getText().toString().matches("[0-99999]+")) {
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    dateOlio = new javaDate();
+                    dateString = dateOlio.getDate(0);
+                    st = et.getText().toString();
+                    Log.d("vika", "error: " + et.getText());
+                    storeData();
+                    startActivity(intent);
+                    finish();
+                } else {
+                    et.setText("Insert a NUMBER here!");
+                }
             }
         });
 

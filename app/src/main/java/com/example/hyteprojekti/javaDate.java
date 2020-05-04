@@ -7,7 +7,7 @@ import java.util.Date;
 public class javaDate {
 
     private java.util.Date today;
-    private SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    private SimpleDateFormat df = new SimpleDateFormat("dd/MM");
     private String StringDate;
 
     javaDate() {

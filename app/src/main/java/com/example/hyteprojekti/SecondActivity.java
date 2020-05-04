@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -22,7 +23,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
     javaDate dateOlio;
-    LineChart chart = (LineChart) findViewById(R.id.chart);
+    //LineChart chart = (LineChart) findViewById(R.id.chart);
     int lol = 69;
 
 
@@ -40,24 +41,34 @@ public class SecondActivity extends AppCompatActivity {
         st = getIntent().getExtras().getString("Value");
         date = getIntent().getExtras().getString("Date");
 
-        days.add(date);
-        for (int i = 1; i>7; i++){
+
+        //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm/yyyy"
+        //days.add(date);
+        for (int i = 0; i<7; i++){
+            Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
             days.add(dateOlio.getDate(i));
         }
 
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
 
-        for (int i = 1; i>7; i++){
-            smokesSmoked.add(prefGet.getInt(days.get(i-1), 0));
+        //Hakee tallennetusta datasta tupakoiden määrän viimeisen viikon päiviltä
+        for (int i = 0; i<7; i++){
+            smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
 
-        tv.setText(Integer.toString(smokesSmoked.get(0)) + " added to day "+ days.get(0) +" total.");
-
-        tv.setText(st + " added to day "+ date +" total.");
-
-
+        tv.setText(Integer.toString(smokesSmoked.get(0)) + " added to day "+ days.get(0) +" total. Average smokes smoked per day this week: "+Keskiarvo());
     }
 
+    public String Keskiarvo(){
+        float kaikki = 0, kArvo = 0;
+        for (int i = 0; i<7; i++){
+            kaikki += smokesSmoked.get(i);
+        }
+        Log.d("Smoke", Float.toString(kaikki));
+        kArvo = kaikki/7;
+        return Float.toString(kArvo);
+    }
+/*
     public void newArvot(String x, int y){
         List<Entry> entries = new ArrayList<Entry>();
         for (int i = 0; i<10; i++) {
@@ -72,8 +83,6 @@ public class SecondActivity extends AppCompatActivity {
         chart.setData(lineData);
         chart.invalidate(); // refresh
 
-    }
-
-
+    }*/
 }
 

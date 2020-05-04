@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);0
+        setContentView(R.layout.activity_main);
 
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
@@ -51,14 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-
-    void storeData(){
+    void storeData(){ //Adds amount of smoked smokes to daily number stored in SharedPreferences.
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
-        prefEditor.putInt(dateString, Integer.parseInt(st));
+        prefEditor.putInt(dateString, Integer.parseInt(st)+prefPut.getInt(dateString, 0));
         prefEditor.commit();
     }
 }

@@ -14,7 +14,7 @@ public class JavaDate {
     }
 
     public String getDate(int daysBefore){
-        return df.format(new Date(System.currentTimeMillis()-daysBefore*24*60*60*1000));
+        return df.format(new Date(System.currentTimeMillis()-(daysBefore - 1)*24*60*60*1000));
     }
 
     public String toString(){

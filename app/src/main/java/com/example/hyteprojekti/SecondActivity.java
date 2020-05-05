@@ -42,8 +42,8 @@ public class SecondActivity extends AppCompatActivity {
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
-        for (int i = 0; i<7; i++){
-            Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
+        for (int i = 7; i>0; i--){
+            Log.d("SmokesDay", "for joka lisää string listaan: "+ i);
             days.add(dateOlio.getDate(i));
         }
 
@@ -55,7 +55,7 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         testi();
-        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +
+        dispText = "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked on "+ days.get(6) +
                 ". Average per day this week: "+averageCounter.Count(smokesSmoked);
         tv.setText(dispText);
     }
@@ -69,6 +69,7 @@ public class SecondActivity extends AppCompatActivity {
         chart.getAxisLeft().setAxisMinimum(1f);
         chart.getAxisRight().setAxisMinimum(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
 
         chart.getDescription().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);

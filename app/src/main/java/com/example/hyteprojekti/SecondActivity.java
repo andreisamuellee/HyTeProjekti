@@ -53,8 +53,9 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         testi();
-        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +
-                ". Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+", this month: "+averageCounter.CountMonth(smokesSmoked);
+        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked today.\n\n"+
+                "Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+
+                ".\n Average per day this month: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
     }
 

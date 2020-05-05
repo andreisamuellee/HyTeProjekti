@@ -39,21 +39,20 @@ public class SecondActivity extends AppCompatActivity {
         averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
-        //days.add(date);
-        for (int i = 0; i<7; i++){
+        for (int i = 0; i<30; i++){
             days.add(dateOlio.getDate(i));
         }
 
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
 
         //Hakee tallennetusta datasta tupakoiden määrän viimeisen viikon päiviltä
-        for (int i = 0; i<7; i++){
+        for (int i = 0; i<30; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
 
         testi();
         dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +
-                ". Average per day this week: "+averageCounter.Count(smokesSmoked);
+                ". Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+", this month: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
     }
 

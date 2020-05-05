@@ -74,7 +74,6 @@ public class SecondActivity extends AppCompatActivity {
         chart.setExtraOffsets(0f,0f,0f,15f);
         chart.moveViewToX(6);
 
-
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
         ArrayList<BarEntry> yValues = new ArrayList<>();
 
@@ -83,14 +82,10 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
-
-
         BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
         dataSets.add(set1);
         set1.setValueTextSize(23);
         chart.getLegend().setEnabled(false);
-
-
         BarData data = new BarData(dataSets);
         chart.setData(data);
     }

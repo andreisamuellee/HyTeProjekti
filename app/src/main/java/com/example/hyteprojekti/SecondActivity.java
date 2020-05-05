@@ -41,22 +41,21 @@ public class SecondActivity extends AppCompatActivity {
         averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
-        //days.add(date);
-        for (int i = 0; i<7; i++){
-            Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
+        for (int i = 0; i<30; i++){
             days.add(dateOlio.getDate(i));
         }
 
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
 
         //Hakee tallennetusta datasta tupakoiden määrän viimeisen viikon päiviltä
-        for (int i = 0; i<7; i++){
+        for (int i = 0; i<30; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
 
         testi();
-        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +
-                ". Average per day this week: "+averageCounter.Count(smokesSmoked);
+        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked today.\n\n"+
+                "Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+
+                ".\n Average per day this month: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
     }
 
@@ -76,7 +75,6 @@ public class SecondActivity extends AppCompatActivity {
         chart.setExtraOffsets(0f,0f,0f,15f);
         chart.moveViewToX(6);
 
-
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
         ArrayList<BarEntry> yValues = new ArrayList<>();
 
@@ -85,14 +83,10 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
-
-
         BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
         dataSets.add(set1);
         set1.setValueTextSize(23);
         chart.getLegend().setEnabled(false);
-
-
         BarData data = new BarData(dataSets);
         chart.setData(data);
     }

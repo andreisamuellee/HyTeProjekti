@@ -15,9 +15,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="190dp"
-        android:hint="      Insert amount"
-        android:fontFamily="@font/marlboro2"/>
+        android:layout_marginTop="224dp"
+        android:autofillHints="1, 2, 3"
+        android:fontFamily="@font/marlboro2"
+        android:hint="@string/amount"
+        android:inputType="number"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/button"
@@ -25,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/rookinappi6" />
 
     <TextView
@@ -34,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="Quit smoking app"
+        android:layout_marginTop="35dp"
         android:fontFamily="@font/marlboro"
-        android:textSize="40dp" />
+        android:text="@string/title"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -45,10 +48,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"
-        android:text="How many have you smoked today?"
+        android:layout_marginTop="160dp"
         android:fontFamily="@font/marlboro"
-        android:textSize="25dp" />
+        android:text="@string/first_text"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="74dp"
+        android:contentDescription="@string/icon_desc"
+        app:srcCompat="@drawable/nuoli2" />
 
     <Button
         android:id="@+id/button3"
@@ -56,9 +69,8 @@
         android:layout_height="76dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="118dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/statsbtn" />
 
 </RelativeLayout>

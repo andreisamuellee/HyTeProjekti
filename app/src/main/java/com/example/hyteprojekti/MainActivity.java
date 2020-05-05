@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et.getText().toString().matches("[0-99999]+")) {
+                if (et.getText().toString().matches("[0-99]+")) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     dateOlio = new JavaDate();
                     dateString = dateOlio.getDate(0);
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

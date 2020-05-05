@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    et.setText("Insert a NUMBER here!");
+                    et.setHint("Insert a NUMBER here!");
                 }
             }
         });

@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="224dp"
-        android:hint="       Insert amount"
+        android:layout_marginTop="190dp"
+        android:hint="      Insert amount"
         android:fontFamily="@font/marlboro2"/>
 
     <Button
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="260dp"
         android:background="@drawable/rookinappi6" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:text="Quit smoking app"
         android:fontFamily="@font/marlboro"
         android:textSize="40dp" />
@@ -45,19 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="130dp"
         android:text="How many have you smoked today?"
         android:fontFamily="@font/marlboro"
         android:textSize="25dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="74dp"
-        app:srcCompat="@drawable/nuoli2" />
 
     <Button
         android:id="@+id/button3"
@@ -65,8 +56,9 @@
         android:layout_height="76dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="9dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="118dp"
         android:background="@drawable/statsbtn" />
 
 </RelativeLayout>

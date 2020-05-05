@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.hyteprojekti.R;
 import com.example.hyteprojekti.SecondActivity;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         et = findViewById(R.id.edittext);
         btnstats = findViewById(R.id.button3);
 
+        String[] randomStrings = new String[] {"juuuuh","rööööki","elikkäs","asdasda"};
+        Toast.makeText(getApplicationContext(),randomStrings[new Random().nextInt(randomStrings.length - 1)],Toast.LENGTH_LONG).show();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        // Käynnistää toisen aktiviteetin
         btnstats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

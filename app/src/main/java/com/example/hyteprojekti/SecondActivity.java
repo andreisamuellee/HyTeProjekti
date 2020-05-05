@@ -8,12 +8,14 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
@@ -36,7 +38,6 @@ public class SecondActivity extends AppCompatActivity {
         smokesSmoked = new ArrayList<>();
         dateOlio = new JavaDate();
         tv = findViewById(R.id.textView);
-        averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
@@ -58,12 +59,33 @@ public class SecondActivity extends AppCompatActivity {
         tv.setText(dispText);
     }
 
+    public String Keskiarvo(){
+        float kaikki = 0, kArvo = 0;
+
+        for (int i = 0; i<7; i++){
+            kaikki += smokesSmoked.get(i);
+        }
+
+        kArvo = kaikki/7;
+        return String.format("%.1f", kArvo);
+    }
+
     public void testi(){
         chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
         chart.setScaleEnabled(false);
         XAxis xAxis = chart.getXAxis();
+        xAxis.setTextSize(15);
+        chart.getAxisLeft().setAxisMinimum(1f);
+        chart.getAxisRight().setAxisMinimum(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        chart.getDescription().setEnabled(false);
+        chart.getAxisLeft().setEnabled(false);
+        chart.getAxisRight().setEnabled(false);
+
+
+
+
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
         ArrayList<BarEntry> yValues = new ArrayList<>();
 
@@ -72,8 +94,19 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
-        BarDataSet set1 = new BarDataSet(yValues, "Data Set 1");
+
+
+
+        BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
         dataSets.add(set1);
+        set1.setValueTextSize(23);
+        chart.getLegend().setEnabled(false);
+
+
+
+
+
+
         BarData data = new BarData(dataSets);
         chart.setData(data);
     }

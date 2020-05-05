@@ -10,15 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.hyteprojekti.R;
-import com.example.hyteprojekti.SecondActivity;
-
 public class MainActivity extends AppCompatActivity {
 
-    Button btn, btnstats;
+    Button btn, btnStats;
     EditText et;
     String st, dateString;
-    javaDate dateOlio;
+    JavaDate dateOlio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
-        btnstats = findViewById(R.id.button3);
+        btnStats = findViewById(R.id.button3);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("null?", et.getText().toString());
                 if (et.getText().toString().matches("[0-99999]+")) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    dateOlio = new javaDate();
+                    dateOlio = new JavaDate();
                     dateString = dateOlio.getDate(0);
                     st = et.getText().toString();
                     Log.d("vika", "error: " + et.getText());
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnstats.setOnClickListener(new View.OnClickListener() {
+        btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);

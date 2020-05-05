@@ -4,13 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class javaDate {
+public class JavaDate {
 
     private java.util.Date today;
     private SimpleDateFormat df = new SimpleDateFormat("dd/MM");
     private String StringDate;
 
-    javaDate() {
+    JavaDate() {
         today = Calendar.getInstance().getTime();
         StringDate = df.format(today);
     }

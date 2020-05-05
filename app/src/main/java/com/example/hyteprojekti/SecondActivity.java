@@ -38,10 +38,12 @@ public class SecondActivity extends AppCompatActivity {
         smokesSmoked = new ArrayList<>();
         dateOlio = new JavaDate();
         tv = findViewById(R.id.textView);
+        averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
         for (int i = 0; i<7; i++){
+            Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
             days.add(dateOlio.getDate(i));
         }
 
@@ -58,17 +60,6 @@ public class SecondActivity extends AppCompatActivity {
         tv.setText(dispText);
     }
 
-    public String Keskiarvo(){
-        float kaikki = 0, kArvo = 0;
-
-        for (int i = 0; i<7; i++){
-            kaikki += smokesSmoked.get(i);
-        }
-
-        kArvo = kaikki/7;
-        return String.format("%.1f", kArvo);
-    }
-
     public void testi(){
         chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
@@ -78,11 +69,12 @@ public class SecondActivity extends AppCompatActivity {
         chart.getAxisLeft().setAxisMinimum(1f);
         chart.getAxisRight().setAxisMinimum(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
         chart.getDescription().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);
         chart.getAxisRight().setEnabled(false);
-
-
+        chart.setExtraOffsets(0f,0f,0f,15f);
+        chart.moveViewToX(6);
 
 
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
@@ -95,15 +87,10 @@ public class SecondActivity extends AppCompatActivity {
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
 
 
-
         BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
         dataSets.add(set1);
         set1.setValueTextSize(23);
         chart.getLegend().setEnabled(false);
-
-
-
-
 
 
         BarData data = new BarData(dataSets);

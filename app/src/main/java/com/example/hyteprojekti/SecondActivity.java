@@ -1,33 +1,22 @@
 package com.example.hyteprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.DataSet;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -36,12 +25,9 @@ public class SecondActivity extends AppCompatActivity {
     TextView tv;
     ArrayList<String> days;
     ArrayList<Integer> smokesSmoked;
-    javaDate dateOlio;
-
-    int lol = 69;
-
-
-
+    JavaDate dateOlio;
+    AverageCounter averageCounter;
+    String dispText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +36,9 @@ public class SecondActivity extends AppCompatActivity {
 
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
-        dateOlio = new javaDate();
-
+        dateOlio = new JavaDate();
         tv = findViewById(R.id.textView);
+        averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
@@ -69,71 +55,45 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         testi();
-        tv.setText("A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +". Average per day this week: "+Keskiarvo());
+        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked on "+ days.get(0) +
+                ". Average per day this week: "+averageCounter.Count(smokesSmoked);
+        tv.setText(dispText);
     }
-
-    public String Keskiarvo(){
-        float kaikki = 0, kArvo = 0;
-
-        for (int i = 0; i<7; i++){
-            kaikki += smokesSmoked.get(i);
-        }
-        
-        kArvo = kaikki/7;
-        return String.format("%.1f", kArvo);
-    }
-/*
-    public void newArvot(String x, int y){
-        List<Entry> entries = new ArrayList<Entry>();
-        for (int i = 0; i<10; i++) {
-            // turn your data into Entry objects
-            entries.add(new Entry(i, 2*i));
-        }
-        LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
-        dataSet.setColor(Color.BLUE);
-        dataSet.setValueTextColor(Color.RED); // styling, ..
-
-        LineData lineData = new LineData(dataSet);
-        chart.setData(lineData);
-        chart.invalidate(); // refresh
-
-    } */
 
     public void testi(){
-
-        final String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
         chart.setScaleEnabled(false);
         XAxis xAxis = chart.getXAxis();
+        xAxis.setTextSize(15);
+        chart.getAxisLeft().setAxisMinimum(1f);
+        chart.getAxisRight().setAxisMinimum(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        chart.getDescription().setEnabled(false);
+        chart.getAxisLeft().setEnabled(false);
+        chart.getAxisRight().setEnabled(false);
+        chart.setExtraOffsets(0f,0f,0f,15f);
+        chart.moveViewToX(6);
 
 
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
-
-
         ArrayList<BarEntry> yValues = new ArrayList<>();
-
 
         for (int i = 0; i<7; i++) {
             yValues.add(new BarEntry(i, smokesSmoked.get(i)));
         }
 
-
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
 
 
-
-        BarDataSet set1 = new BarDataSet(yValues, "Data Set 1");
+        BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
         dataSets.add(set1);
-
-
-
-
+        set1.setValueTextSize(23);
+        chart.getLegend().setEnabled(false);
 
 
         BarData data = new BarData(dataSets);
-
         chart.setData(data);
     }
 }

@@ -4,15 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class javaDate {
+public class JavaDate {
 
     private java.util.Date today;
     private SimpleDateFormat df = new SimpleDateFormat("dd/MM");
     private String StringDate;
 
-    javaDate() {
-        today = Calendar.getInstance().getTime();
-        StringDate = df.format(today);
+    JavaDate() {
     }
 
     public String getDate(int daysBefore){
@@ -20,6 +18,8 @@ public class javaDate {
     }
 
     public String toString(){
+        today = Calendar.getInstance().getTime();
+        StringDate = df.format(today);
         return StringDate;
     }
 }

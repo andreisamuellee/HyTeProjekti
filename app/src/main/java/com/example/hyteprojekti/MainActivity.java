@@ -9,9 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toasts toastStrings;
     Button btn, btnStats;
     EditText et;
     String st, dateString;
@@ -25,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
         btnStats = findViewById(R.id.button3);
+        toastStrings = new Toasts();
 
+        for (int i = 0; i<10; i++) {
+            Toast.makeText(getApplicationContext(), toastStrings.toString(), Toast.LENGTH_LONG).show();
+        }
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

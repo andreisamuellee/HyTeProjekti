@@ -12,6 +12,7 @@ public class AverageCounter {
         for (int i = 0; i<7; i++){
             kaikki += myList.get(i);
         }
+
         kArvo = kaikki/7;
         return String.format("%.1f", kArvo);
     }

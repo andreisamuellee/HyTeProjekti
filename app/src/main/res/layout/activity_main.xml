@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="200dp"
         android:autofillHints="1, 2, 3"
         android:fontFamily="@font/marlboro2"
         android:hint="@string/amount"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="270dp"
         android:background="@drawable/rookinappi6" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/marlboro"
         android:text="@string/title"
         android:textSize="40sp" />
@@ -48,20 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/marlboro"
         android:text="@string/first_text"
         android:textSize="25sp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="74dp"
-        android:contentDescription="@string/icon_desc"
-        app:srcCompat="@drawable/nuoli2" />
 
     <Button
         android:id="@+id/button3"
@@ -69,8 +59,8 @@
         android:layout_height="76dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginBottom="111dp"
         android:background="@drawable/statsbtn" />
 
 </RelativeLayout>

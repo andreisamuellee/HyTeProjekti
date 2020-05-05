@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         et = findViewById(R.id.edittext);
         btnStats = findViewById(R.id.button3);
 
+        String[] randomStrings = new String[]{"juuuuh", "rööööki", "elikkäs", "asdasda", "appi", "eläpolta"};
+        Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

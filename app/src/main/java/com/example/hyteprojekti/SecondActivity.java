@@ -41,7 +41,6 @@ public class SecondActivity extends AppCompatActivity {
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         //days.add(date);
         for (int i = 0; i<7; i++){
-            Log.d("SmokesDay", "for joka lisää string listaan: "+dateOlio.getDate(i));
             days.add(dateOlio.getDate(i));
         }
 

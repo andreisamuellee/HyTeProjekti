@@ -11,8 +11,6 @@ public class JavaDate {
     private String StringDate;
 
     JavaDate() {
-        today = Calendar.getInstance().getTime();
-        StringDate = df.format(today);
     }
 
     public String getDate(int daysBefore){
@@ -20,6 +18,8 @@ public class JavaDate {
     }
 
     public String toString(){
+        today = Calendar.getInstance().getTime();
+        StringDate = df.format(today);
         return StringDate;
     }
 }

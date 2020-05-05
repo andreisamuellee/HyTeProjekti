@@ -29,7 +29,18 @@ public class MainActivity extends AppCompatActivity {
         et = findViewById(R.id.edittext);
         btnStats = findViewById(R.id.button3);
 
-        String[] randomStrings = new String[]{"juuuuh", "rööööki", "elikkäs", "asdasda", "appi", "eläpolta"};
+        String[] randomStrings = new String[]{"There are 1.1 billion smokers", "Smoking is the cause of 1 in 5 deaths",
+                "A single cigarette contains over 4,800 chemicals", "Smoking increases your risk of getting lung diseases",
+                "Tobacco kills up to half of its users", "Tobacco kills more than 8 million people each year",
+                "Second-hand smoke causes 1.2 million premature deaths per year", "Adult male smokers lose an average of 13.2 years of life",
+                "Around 10 million cigarettes are purchased per minute", "There are more than 4,000 chemicals in tobacco smoke",
+                "Second hand smoking kills", "There is no safe level of exposure to secondhand smoke",
+                "Tobacco contains arsenic", "Tobacco contains cyanide", "Ninety percent of lung cancer cases are due to smoking",
+                "Smoking raises blood pressure", "Smoking stains your teeth and gums", "Life insurance is more expensive"};
+        Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), randomStrings[new Random().nextInt(randomStrings.length - 1)], Toast.LENGTH_LONG).show();
 
         btn.setOnClickListener(new View.OnClickListener() {

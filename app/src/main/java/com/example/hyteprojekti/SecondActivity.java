@@ -1,7 +1,10 @@
 package com.example.hyteprojekti;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -41,8 +44,8 @@ public class SecondActivity extends AppCompatActivity {
         averageCounter = new AverageCounter();
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
-        for (int i = 0; i<30; i++){
-            days.add(dateOlio.getDate(i));
+        for (int i = 30; i>0; i--){
+            days.add(dateOlio.getDate(i - 24));
         }
 
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
@@ -53,27 +56,33 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         testi();
-        dispText = "A total of "+Integer.toString(smokesSmoked.get(0)) + " smoked today.\n\n"+
+        dispText = "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked today.\n\n"+
                 "Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+
                 ".\n Average per day this month: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
     }
 
+    @SuppressLint("ResourceAsColor")
     public void testi(){
+
+
+
         chart = (BarChart) findViewById(R.id.chart);
         chart.setDragEnabled(true);
         chart.setScaleEnabled(false);
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setTextSize(15);
+
         chart.getAxisLeft().setAxisMinimum(1f);
         chart.getAxisRight().setAxisMinimum(1f);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setTextSize(15);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        chart.setBackgroundColor(Color.WHITE);
+
 
         chart.getDescription().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);
         chart.getAxisRight().setEnabled(false);
         chart.setExtraOffsets(0f,0f,0f,15f);
-        chart.moveViewToX(6);
 
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
         ArrayList<BarEntry> yValues = new ArrayList<>();

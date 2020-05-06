@@ -5,6 +5,10 @@ import java.util.Random;
 public class Toasts {
     String[] randomToasts;
 
+    /**
+     * Class constructor.
+     * Constructs randomToasts list.
+     */
     Toasts() {
         randomToasts = new String[]{"There are 1.1 billion smokers.", "Smoking is the cause of 1 in 5 deaths.", "The majority of smokers are within the age 20-32.",
                 "A single cigarette contains over 4,800 chemicals.", "Smoking increases your risk of getting lung diseases.",
@@ -26,7 +30,11 @@ public class Toasts {
                 "Smoking causes testicular cancer.", "Average smoker spends 1500eur a year on tobacco.", "It's completely legal for minors to smoke cigarettes."};
     }
 
-    //Returns a random string from randomToasts list.
+    /**
+     * Returns a random string from randomToasts list.
+     *
+     * @return Returns a random string from randomToasts list.
+     */
     public String toString() {
         return randomToasts[new Random().nextInt(randomToasts.length - 1)];
     }

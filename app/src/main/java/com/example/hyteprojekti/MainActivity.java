@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
         toastStrings = new Toasts();
         handler = new Handler();
 
-        //Swaps out info every 5 seconds.
         rollInfo();
 
-        //Main button used to add smokes and move to the second activity.
+        /**
+         * Main button used to add smokes and move to the second activity.
+         */
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //Second button used to move straight to second activity.
+        /**
+         * Second button used to move straight to second activity.
+         */
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,12 +69,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Swaps out info every 5 seconds.
+    /**
+     * Runs info swapper
+     */
     private void rollInfo() {
         handler.post(run);
     }
 
-    //Swaps out info every 5 seconds.
+    /**
+     * Swaps out info every 5 seconds
+     */
     private Runnable run = new Runnable() {
         @Override
         public void run() {
@@ -80,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(this, 5000);
         }
     };
-
-    //Adds amount of smoked smokes to daily number stored in SharedPreferences.
+    /**
+     * Stores data to SharedPreferences
+     */
     void storeData(){
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();

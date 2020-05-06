@@ -3,9 +3,12 @@ package com.example.hyteprojekti;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
+
+    private Button btnBack;
 
     private static final String TAG = "SecondActivity";
     BarChart chart;
@@ -40,6 +45,7 @@ public class SecondActivity extends AppCompatActivity {
         dateOlio = new JavaDate();
         tv = findViewById(R.id.textView);
         averageCounter = new AverageCounter();
+        btnBack = findViewById(R.id.Back);
 
         //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
         for (int i = 30; i>0; i--){
@@ -58,6 +64,14 @@ public class SecondActivity extends AppCompatActivity {
         dispText = "Average per day last 7 days: "+averageCounter.CountWeek(smokesSmoked)+
                 ".\n Average per day last 30 days: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @SuppressLint("ResourceAsColor")

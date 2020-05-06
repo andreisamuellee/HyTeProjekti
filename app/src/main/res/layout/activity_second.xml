@@ -27,4 +27,9 @@
         android:gravity="center"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

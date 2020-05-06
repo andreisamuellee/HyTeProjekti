@@ -6,19 +6,17 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
@@ -56,9 +54,9 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         testi();
-        dispText = "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked today.\n\n"+
-                "Average per day this week: "+averageCounter.CountWeek(smokesSmoked)+
-                ".\n Average per day this month: "+averageCounter.CountMonth(smokesSmoked);
+        Toast.makeText(getApplicationContext(), "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked today.", Toast.LENGTH_SHORT).show();
+        dispText = "Average per day last 7 days: "+averageCounter.CountWeek(smokesSmoked)+
+                ".\n Average per day last 30 days: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
     }
 

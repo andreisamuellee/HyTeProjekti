@@ -1,7 +1,5 @@
 package com.example.hyteprojekti;
 
-import android.widget.Toast;
-
 import java.util.Random;
 
 public class Toasts {

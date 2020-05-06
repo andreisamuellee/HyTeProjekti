@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">HyTeProjekti</string>
+    <string name="app_name">QuitSmoking</string>
     <string name="amount">Insert amount</string>
     <string name="first_text">How many have you smoked today?</string>
-    <string name="title">Quit Smoking App</string>
+    <string name="title">Quit Smoking</string>
     <string name="icon_desc">Smoke icon</string>
+    <string name="info">Insert info text here</string>
 </resources>

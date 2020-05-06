@@ -76,37 +76,68 @@ public class SecondActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void buildChart(){
 
-
-
+         /**
+         * find the view
+         */
         chart = (BarChart) findViewById(R.id.chart);
-        chart.setDragEnabled(true);
-        chart.setScaleEnabled(false);
 
+        /**
+         * Specifies how the chart should look and what it shows
+         */
         chart.getAxisLeft().setAxisMinimum(1f);
         chart.getAxisRight().setAxisMinimum(1f);
+
         XAxis xAxis = chart.getXAxis();
         xAxis.setTextSize(15);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
         chart.setBackgroundColor(Color.WHITE);
-
-
         chart.getDescription().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);
         chart.getAxisRight().setEnabled(false);
         chart.setExtraOffsets(0f,0f,0f,15f);
 
+        /**
+         *Change the x-axis labels from float to date
+         */
         xAxis.setValueFormatter(new IndexAxisValueFormatter(days));
+
+        /**
+        *Create ArrayList to put the y-axis values to
+         */
         ArrayList<BarEntry> yValues = new ArrayList<>();
 
+        /**
+        *Tell chart how many bars it should show and what values to put in them
+         */
         for (int i = 0; i<7; i++) {
             yValues.add(new BarEntry(i, smokesSmoked.get(i)));
         }
 
+        /**
+        *Create list where you put your data sets
+         */
         ArrayList<IBarDataSet>dataSets = new ArrayList<>();
+
+        /**
+        *Create new data set
+         */
         BarDataSet set1 = new BarDataSet(yValues, "Tupakoita poltettu");
+
+        /**
+        *Add your new data set to list of data sets
+         */
         dataSets.add(set1);
+
+        /**
+        *Make it look good
+         */
         set1.setValueTextSize(23);
         chart.getLegend().setEnabled(false);
+
+        /**
+        *Show your data sets in your chart
+         */
         BarData data = new BarData(dataSets);
         chart.setData(data);
     }

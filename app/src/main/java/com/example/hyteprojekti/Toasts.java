@@ -26,6 +26,7 @@ public class Toasts {
                 "Smoking causes testicular cancer.", "Average smoker spends 1500eur a year on tobacco.", "It's completely legal for minors to smoke cigarettes."};
     }
 
+    //Returns a random string from randomToasts list.
     public String toString() {
         return randomToasts[new Random().nextInt(randomToasts.length - 1)];
     }

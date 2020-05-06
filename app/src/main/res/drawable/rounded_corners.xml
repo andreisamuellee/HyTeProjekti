@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    //Used to style infoText background.
 
-    <solid         android:color="#B0FFFFFF"
+    <solid
+        android:color="#B0FFFFFF"
         />
 
     <padding

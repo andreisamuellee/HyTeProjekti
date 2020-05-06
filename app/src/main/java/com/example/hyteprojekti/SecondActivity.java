@@ -24,16 +24,15 @@ import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
 
-    private Button btnBack;
-
     private static final String TAG = "SecondActivity";
-    BarChart chart;
-    TextView tv;
-    ArrayList<String> days;
-    ArrayList<Integer> smokesSmoked;
-    JavaDate dateOlio;
-    AverageCounter averageCounter;
-    String dispText;
+    private BarChart chart;
+    private TextView tv;
+    private ArrayList<String> days;
+    private ArrayList<Integer> smokesSmoked;
+    private JavaDate dateOlio;
+    private AverageCounter averageCounter;
+    private String dispText;
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class SecondActivity extends AppCompatActivity {
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
 
-        testi();
+        buildChart();
         Toast.makeText(getApplicationContext(), "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked today.", Toast.LENGTH_SHORT).show();
         dispText = "Average per day last 7 days: "+averageCounter.CountWeek(smokesSmoked)+
                 ".\n Average per day last 30 days: "+averageCounter.CountMonth(smokesSmoked);
@@ -75,7 +74,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceAsColor")
-    public void testi(){
+    public void buildChart(){
 
 
 

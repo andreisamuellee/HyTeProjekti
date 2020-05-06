@@ -46,14 +46,18 @@ public class SecondActivity extends AppCompatActivity {
         averageCounter = new AverageCounter();
         btnBack = findViewById(R.id.Back);
 
-        //Laittaa viimeisen viikon päivät listaan muodossa String "dd/mm"
+        /**
+         * Puts the last 30 days into a list.
+         */
         for (int i = 30; i>0; i--){
             days.add(dateOlio.getDate(i - 24));
         }
 
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
 
-        //Hakee tallennetusta datasta tupakoiden määrän viimeisen viikon päiviltä
+        /**
+         * Gets the amount of tobaccos smoked in the last 30 days from SharedPreferences and puts them into a list.
+         */
         for (int i = 0; i<30; i++){
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
@@ -64,6 +68,9 @@ public class SecondActivity extends AppCompatActivity {
                 ".\n Average per day last 30 days: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
 
+        /**
+         * Button used to go back to the first activity
+         */
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +81,9 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceAsColor")
+    /**
+     * Builds a chart
+     */
     public void buildChart(){
 
          /**

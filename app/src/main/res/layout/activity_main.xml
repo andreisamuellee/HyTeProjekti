@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:autofillHints="1, 2, 3"
-        android:fontFamily="@font/marlboro2"
+        android:fontFamily="sans-serif"
         android:hint="@string/amount"
         android:inputType="number"
         android:textAlignment="center" />
@@ -40,7 +40,9 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/marlboro"
         android:text="@string/title"
-        android:textSize="40sp" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -49,9 +51,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="140dp"
-        android:fontFamily="@font/marlboro"
+        android:fontFamily="@font/marlboro2"
         android:text="@string/first_text"
-        android:textSize="25sp" />
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button3"
@@ -60,8 +63,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="147dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="93dp"
         android:background="@drawable/statsbtn" />
 
     <TextView
@@ -72,7 +75,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_corners"
-        android:text="nakki"
-        android:textColor="#000000" />
+        android:text="@string/info"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
 </RelativeLayout>

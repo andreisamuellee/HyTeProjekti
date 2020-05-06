@@ -34,16 +34,15 @@ public class MainActivity extends AppCompatActivity {
         info = findViewById(R.id.infoText);
         toastStrings = new Toasts();
         handler = new Handler();
-        /*
-        for (int i = 0; i<10; i++) {
-            Toast.makeText(getApplicationContext(), toastStrings.toString(), Toast.LENGTH_LONG).show();
-        }*/
 
+        //Swaps out info every 5 seconds.
         rollInfo();
 
+        //Main button used to add smokes and move to the second activity.
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Requires number input to pass through to the second activity
                 if (et.getText().toString().matches("[0-99]+")) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     dateOlio = new JavaDate();
@@ -57,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Second button used to move straight to second activity.
         btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,22 +67,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Swaps out info every 5 seconds.
     private void rollInfo() {
         handler.post(run);
-        Log.d("run", "starting rollinfo()");
     }
 
+    //Swaps out info every 5 seconds.
     private Runnable run = new Runnable() {
         @Override
         public void run() {
-            Log.d("run", "setting text");
             info.setText(toastStrings.toString());
-            Log.d("run", toastStrings.toString());
             handler.postDelayed(this, 5000);
         }
     };
 
-    void storeData(){ //Adds amount of smoked smokes to daily number stored in SharedPreferences.
+    //Adds amount of smoked smokes to daily number stored in SharedPreferences.
+    void storeData(){
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
         prefEditor.putInt(dateString, Integer.parseInt(st)+prefPut.getInt(dateString, 0));

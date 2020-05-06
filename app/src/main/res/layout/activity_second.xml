@@ -27,4 +27,10 @@
         android:gravity="center"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="70dp"
+        android:layout_height="63dp"
+        android:background="@drawable/backbtn" />
+
 </RelativeLayout>

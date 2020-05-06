@@ -5,21 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Date;
+import java.util.Calendar;
+
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    Toasts toastStrings;
-    Button btn, btnStats;
-    EditText et;
-    String st, dateString;
-    JavaDate dateOlio;
+    private Toasts toastStrings;
+    private Button btn, btnStats;
+    private EditText et;
+    private TextView info;
+    private String st, dateString;
+    private JavaDate dateOlio;
+    private Handler handler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +39,15 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
         btnStats = findViewById(R.id.button3);
+        info = findViewById(R.id.infoText);
         toastStrings = new Toasts();
-
+        handler = new Handler();
+        /*
         for (int i = 0; i<10; i++) {
             Toast.makeText(getApplicationContext(), toastStrings.toString(), Toast.LENGTH_LONG).show();
-        }
+        }*/
+
+        rollInfo();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +73,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void rollInfo() {
+        handler.post(run);
+        Log.d("run", "starting rollinfo()");
+    }
+
+    private Runnable run = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("run", "setting text");
+            info.setText(toastStrings.toString());
+            Log.d("run", toastStrings.toString());
+            handler.postDelayed(this, 5000);
+        }
+    };
 
     void storeData(){ //Adds amount of smoked smokes to daily number stored in SharedPreferences.
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);

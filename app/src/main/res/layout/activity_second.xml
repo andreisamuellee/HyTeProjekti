@@ -36,6 +36,7 @@
         android:layout_width="70dp"
         android:layout_height="63dp"
         android:alpha="0.7"
-        android:background="@drawable/backbtn" />
+        android:background="@drawable/backbtn"
+        android:onClick="goBack" />
 
 </RelativeLayout>

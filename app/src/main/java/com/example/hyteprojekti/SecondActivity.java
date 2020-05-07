@@ -38,7 +38,6 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
         days = new ArrayList<>();
         smokesSmoked = new ArrayList<>();
         dateOlio = new JavaDate();
@@ -52,8 +51,8 @@ public class SecondActivity extends AppCompatActivity {
         for (int i = 30; i>0; i--){
             days.add(dateOlio.getDate(i - 24));
         }
-
         SharedPreferences prefGet = getSharedPreferences("SmokePref" ,MainActivity.MODE_PRIVATE);
+
 
         /**
          * Gets the amount of tobaccos smoked in the last 30 days from SharedPreferences and puts them into a list.
@@ -62,23 +61,24 @@ public class SecondActivity extends AppCompatActivity {
             smokesSmoked.add(prefGet.getInt(days.get(i), 0));
         }
 
+
         buildChart();
         Toast.makeText(getApplicationContext(), "A total of "+Integer.toString(smokesSmoked.get(6)) + " smoked today.", Toast.LENGTH_SHORT).show();
         dispText = "Average per day last 7 days: "+averageCounter.CountWeek(smokesSmoked)+
                 ".\n Average per day last 30 days: "+averageCounter.CountMonth(smokesSmoked);
         tv.setText(dispText);
-
-        /**
-         * Button used to go back to the first activity
-         */
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
+    /**
+     * Button used to go back to the first activity
+     * @param view used for button onClick()
+     */
+    public void goBack(View view){
+        Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
 
     @SuppressLint("ResourceAsColor")
     /**

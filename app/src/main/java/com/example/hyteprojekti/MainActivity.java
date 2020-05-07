@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Toasts toastStrings;
-    private Button btn, btnStats;
     private EditText et;
     private TextView info;
     private String st, dateString;
@@ -27,46 +26,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btn = findViewById(R.id.button);
         et = findViewById(R.id.edittext);
-        btnStats = findViewById(R.id.button3);
         info = findViewById(R.id.infoText);
         toastStrings = new Toasts();
         handler = new Handler();
-
         rollInfo();
+    }
 
-        /**
-         * Main button used to add smokes and move to the second activity.
-         */
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Requires number input to pass through to the second activity
-                if (et.getText().toString().matches("[0-99]+")) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    dateOlio = new JavaDate();
-                    dateString = dateOlio.getDate(0);
-                    st = et.getText().toString();
-                    storeData();
-                    startActivity(intent);
-                    finish();
-                } else {
-                    et.setHint("Insert a NUMBER here!");
-                }
-            }
-        });
-        /**
-         * Second button used to move straight to second activity.
-         */
-        btnStats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+    /**
+     * Main button used to add smokes and move to the second activity.
+     * @param view used for button onClick()
+     */
+    public void inputTobaccos(View view){
+        if (et.getText().toString().matches("[0-99]+")) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            dateOlio = new JavaDate();
+            dateString = dateOlio.getDate(0);
+            st = et.getText().toString();
+            storeData();
+            startActivity(intent);
+            finish();
+        } else {
+            et.setHint("Insert a NUMBER here!");
+        }
+    }
+
+    /**
+     * Second button used to move straight to second activity.
+     * @param view used for button onClick()
+     */
+    public void goToStatistics(View view){
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -89,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Stores data to SharedPreferences
      */
-    void storeData(){
+    private void storeData(){
         SharedPreferences prefPut = getSharedPreferences("SmokePref",MainActivity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
         prefEditor.putInt(dateString, Integer.parseInt(st)+prefPut.getInt(dateString, 0));

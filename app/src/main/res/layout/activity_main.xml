@@ -29,7 +29,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="270dp"
-        android:background="@drawable/rookinappi6" />
+        android:background="@drawable/rookinappi6"
+        android:onClick="inputTobaccos" />
 
     <TextView
         android:id="@+id/textView2"
@@ -63,7 +64,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp"
-        android:background="@drawable/statsbtn" />
+        android:background="@drawable/statsbtn"
+        android:onClick="goToStatistics" />
 
     <TextView
         android:id="@+id/infoText"
